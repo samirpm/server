@@ -1,0 +1,59 @@
+{
+  "name": "express-rest-api-boilerplate",
+  "version": "0.0.0",
+  "author": "Lukas Aichbauer <l.aichbauer@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aichbauer/express-rest-api-boilerplate.git"
+  },
+  "homepage": "https://github.com/aichbauer/express-rest-api-boilerplate#readme",
+  "bugs": {
+    "url": "https://github.com/aichbauer/express-rest-api-boilerplate/issues"
+  },
+  "scripts": {
+    "start": "npm run nodemon",
+    "dev": "cross-env NODE_ENV=development node ./api/api.js",
+    "nodemon": "nodemon --exec npm run dev",
+    "lint": "eslint ./api/. ./config/. ./test/.",
+    "prepush": "npm test",
+    "pretest": "npm run lint",
+    "production": "cross-env NODE_ENV=production node ./api/api.js",
+    "test": "npm run create-sqlite-db; cross-env NODE_ENV=testing jest --coverage; npm run drop-sqlite-db",
+    "test-ci": "jest --coverage --forceExit"
+  },
+  "jest": {
+    "globals": {
+      "__DEV__": true
+    },
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.20.1",
+    "core-js": "^3.26.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-fileupload": "^1.4.0",
+    "express-routes-mapper": "^1.1.0",
+    "helmet": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.25.3",
+    "sqlite3": "^5.1.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "eslint": "^8.26.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "husky": "^8.0.1",
+    "jest": "^29.2.2",
+    "nodemon": "^2.0.20",
+    "shx": "^0.3.4",
+    "supertest": "^6.3.1"
+  }
+}
